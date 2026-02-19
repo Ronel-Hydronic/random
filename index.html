@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SYSTEM HACK</title>
+    <style>
+        body {
+            background: black;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .matrix-text {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        .skeleton {
+            white-space: pre;
+            color: white;
+            font-size: 12px;
+            line-height: 1;
+        }
+        #console {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <pre class="skeleton">
+        / \
+       / _ \
+      | / \ |
+      ||   || _______
+      ||   || |\     \
+      ||   || ||\     \
+      ||   || || \    |
+      ||   || ||  \__/
+      ||   || ||   ||
+     _||___||_||___||_
+    </pre>
+    
+    <div id="console"></div>
+
+    <script>
+        const messages = [
+            "CONNECTING TO TARGET...",
+            "BYPASSING FIREWALL...",
+            "INJECTING VIRUS.EXE...",
+            "DOWNLOADING ILLEGAL CONTENT...",
+            "FORMATTING HARD DRIVE...",
+            "DELETING SYSTEM32...",
+            "HACKING MAINFRAME...",
+            "UPLOADING TO DARK WEB...",
+            "INSTALLING BACKDOOR...",
+            "DECRYPTING PASSWORDS..."
+        ];
+        
+        let i = 0;
+        const consoleDiv = document.getElementById('console');
+        
+        setInterval(() => {
+            if (i < messages.length) {
+                consoleDiv.innerHTML += `<div class="matrix-text">> ${messages[i]} [COMPLETE]</div>`;
+                i++;
+            } else {
+                consoleDiv.innerHTML += `<div class="matrix-text" style="color:red">> SYSTEM COMPROMISED</div>`;
+            }
+        }, 800);
+    </script>
+</body>
+</html>
