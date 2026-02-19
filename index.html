@@ -4,130 +4,134 @@
     <title>SYSTEM HACK</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
+        html, body {
             background: black;
             color: #0f0;
             font-family: "Courier New", monospace;
             overflow: hidden;
             height: 100vh;
             width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
         #screen {
-            padding: 20px;
+            padding: 40px;
             height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
         }
         .header {
-            border-bottom: 2px solid #0f0;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            border-bottom: 3px solid #0f0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
         }
         .title {
-            font-size: 24px;
+            font-size: 36px;
             font-weight: bold;
-            text-shadow: 0 0 10px #0f0;
+            text-shadow: 0 0 15px #0f0;
+            animation: blink 0.5s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0.3; }
         }
         .subtitle {
-            font-size: 14px;
-            opacity: 0.7;
+            font-size: 18px;
+            opacity: 0.8;
+            margin-top: 10px;
         }
         .skeleton {
             white-space: pre;
             color: #fff;
-            font-size: 10px;
+            font-size: 12px;
             line-height: 1.2;
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            opacity: 0.5;
+            bottom: 40px;
+            right: 40px;
+            opacity: 0.7;
         }
         #console {
             flex-grow: 1;
             overflow: hidden;
-            font-size: 16px;
+            font-size: 20px;
         }
         .line {
-            margin: 5px 0;
+            margin: 10px 0;
             opacity: 0;
-            animation: fadeIn 0.3s forwards;
+            animation: fadeIn 0.2s forwards;
         }
         @keyframes fadeIn {
             to { opacity: 1; }
         }
-        .progress-bar {
-            width: 300px;
-            height: 20px;
-            border: 2px solid #0f0;
-            margin: 10px 0;
-        }
-        .progress-fill {
-            height: 100%;
-            background: #0f0;
-            width: 0%;
-            transition: width 0.5s;
-        }
-        .error { color: red; text-shadow: 0 0 5px red; }
-        .warning { color: yellow; }
+        .error { color: #f00; text-shadow: 0 0 15px #f00; font-size: 28px; }
+        .warning { color: #ff0; }
         .success { color: #0f0; }
         
-        /* Scanline effect */
+        /* Scanline */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0,0,0,0.15),
-                rgba(0,0,0,0.15) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
             pointer-events: none;
             z-index: 999;
         }
+        
+        /* Glitch effect */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .glitch {
+            animation: glitch 0.3s infinite;
+        }
     </style>
 </head>
-<body>
+<body onload="startNow()">
     <div id="screen">
         <div class="header">
-            <div class="title">⚠️ SYSTEM BREACH DETECTED ⚠️</div>
+            <div class="title glitch">⚠️ SYSTEM BREACH DETECTED ⚠️</div>
             <div class="subtitle">UNAUTHORIZED ACCESS IN PROGRESS...</div>
         </div>
         
         <div id="console"></div>
         
         <pre class="skeleton">
-    ╔══════════════════════════╗
-    ║     HACKER DETECTED      ║
-    ║   ████████████████       ║
-    ║   ██           ██        ║
-    ║   ██  ◊  ◊  ◊  ██        ║
-    ║   ██     ◊     ██        ║
-    ║   ██  ◊     ◊  ██        ║
-    ║   ██     ◊     ██        ║
-    ║   ████████████████       ║
-    ╚══════════════════════════╝
+    ╔═══════════════════════════════╗
+    ║      HACKER ACTIVATED         ║
+    ║   ████████████████████        ║
+    ║   ██  ◊  ◊  ◊  ◊  ██         ║
+    ║   ██      ◊      ██          ║
+    ║   ██  ◊      ◊   ██          ║
+    ║   ██      ◊      ██          ║
+    ║   ████████████████████        ║
+    ╚═══════════════════════════════╝
         </pre>
     </div>
 
     <script>
         const hacks = [
-            { text: "Connecting to target server...", time: 800 },
-            { text: "Bypassing firewall...", time: 1000 },
-            { text: "IP address: 192.168.1.XXX [EXPOSED]", time: 600 },
-            { text: "Cracking encryption...", time: 1200 },
-            { text: "Injecting malicious payload...", time: 800 },
-            { text: "Downloading sensitive data...", time: 1500 },
-            { text: "Accessing webcam...", time: 1000 },
-            { text: "Reading keystrokes...", time: 800 },
-            { text: "Copying password database...", time: 1200 },
-            { text: "Uploading to dark web...", time: 1000 },
-            { text: "Installing rootkit...", time: 800 },
-            { text: "Formating hard drive...", time: 600 },
-            { text: "Deleting system files...", time: 800 },
-            { text: "⚠️ CRITICAL ERROR DETECTED ⚠️", time: 500, type: "warning" },
-            { text: "SYSTEM COMPROMISED", time: 1000, type: "error" }
+            { text: "► CONNECTING TO TARGET SERVER...", time: 600 },
+            { text: "► BYPASSING FIREWALL...", time: 800 },
+            { text: "► IP ADDRESS: 192.168.1.XXX [EXPOSED]", time: 500 },
+            { text: "► CRACKING ENCRYPTION KEYS...", time: 1000 },
+            { text: "► INJECTING MALICIOUS PAYLOAD...", time: 700 },
+            { text: "► DOWNLOADING SENSITIVE DATA...", time: 1200 },
+            { text: "► ACCESSING WEBCAM...", time: 800 },
+            { text: "► KEYSTROKE LOGGING ACTIVE...", time: 600 },
+            { text: "► COPYING PASSWORD DATABASE...", time: 1000 },
+            { text: "► UPLOADING TO DARK WEB...", time: 800 },
+            { text: "► INSTALLING ROOTKIT...", time: 700 },
+            { text: "► FORMATTING HARD DRIVE...", time: 500 },
+            { text: "► DELETING SYSTEM FILES...", time: 600 },
+            { text: "► ⚠️ CRITICAL ERROR DETECTED ⚠️", time: 400, type: "warning" },
+            { text: "► ❌ SYSTEM COMPROMISED ❌", time: 800, type: "error" }
         ];
         
         const consoleDiv = document.getElementById('console');
@@ -136,7 +140,7 @@
         function addLine(text, type = "") {
             const line = document.createElement('div');
             line.className = 'line ' + type;
-            line.innerHTML = `> ${text}`;
+            line.innerHTML = text;
             consoleDiv.appendChild(line);
             consoleDiv.scrollTop = consoleDiv.scrollHeight;
         }
@@ -148,23 +152,22 @@
                 index++;
                 setTimeout(runHack, hack.time);
             } else {
-                // Final screen
                 setTimeout(() => {
-                    document.body.style.background = 'red';
-                    document.body.innerHTML = '<h1 style="color:white;font-size:50px;padding:50px;">☠️ SYSTEM DESTROYED ☠️</h1>';
-                }, 2000);
+                    document.body.style.background = '#200';
+                    const screen = document.getElementById('screen');
+                    screen.innerHTML = '<div style="color:red;font-size:50px;text-align:center;margin-top:30%;text-shadow:0 0 30px red;animation:blink 0.3s infinite;" class="glitch">☠️ SYSTEM DESTROYED ☠️</div>';
+                }, 1500);
             }
         }
         
-        // Start after 1 second
-        setTimeout(runHack, 1000);
-        
-        // Try to go full screen on click
-        document.addEventListener('click', () => {
+        function startNow() {
+            // Try fullscreen (will work if user clicked anywhere before)
             if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
+                document.documentElement.requestFullscreen().catch(() => {});
             }
-        });
+            
+            setTimeout(runHack, 500);
+        }
     </script>
 </body>
 </html>
