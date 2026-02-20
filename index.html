@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website</title>
+    <title>SYSTEM HACK</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body {
@@ -15,6 +15,25 @@
             top: 0;
             left: 0;
         }
+        
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        
+        .shake {
+            animation: shake 0.5s infinite;
+        }
+        
         #screen {
             padding: 40px;
             height: 100%;
@@ -23,33 +42,37 @@
             flex-direction: column;
         }
         .header {
-            border-bottom: 3px solid #0f0;
+            border-bottom: 3px solid #f00;
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
         .title {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: bold;
-            text-shadow: 0 0 15px #0f0;
-            animation: blink 0.5s infinite;
+            color: #f00;
+            text-shadow: 0 0 20px #f00, 0 0 40px #f00;
+            animation: blink 0.3s infinite;
         }
         @keyframes blink {
+            0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
         .subtitle {
             font-size: 18px;
-            opacity: 0.8;
+            color: #f00;
+            opacity: 0.9;
             margin-top: 10px;
         }
         .skeleton {
             white-space: pre;
-            color: #fff;
-            font-size: 12px;
+            color: #f00;
+            font-size: 14px;
             line-height: 1.2;
             position: absolute;
             bottom: 40px;
             right: 40px;
-            opacity: 0.7;
+            opacity: 0.8;
+            text-shadow: 0 0 10px #f00;
         }
         #console {
             flex-grow: 1;
@@ -59,37 +82,43 @@
         .line {
             margin: 10px 0;
             opacity: 0;
-            animation: fadeIn 0.2s forwards;
+            animation: fadeIn 0.1s forwards;
         }
         @keyframes fadeIn {
             to { opacity: 1; }
         }
-        .error { color: #f00; text-shadow: 0 0 15px #f00; font-size: 28px; }
-        .warning { color: #ff0; }
-        .success { color: #0f0; }
+        .error { color: #f00; text-shadow: 0 0 15px #f00; font-size: 26px; font-weight: bold; }
+        .warning { color: #ff0; text-shadow: 0 0 10px #ff0; }
         
-        /* Scanline */
+        /* Scanlines */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px, transparent 1px, transparent 2px);
             pointer-events: none;
             z-index: 999;
         }
         
-        /* Glitch effect */
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+        /* Alert border */
+        body.alert {
+            animation: redFlash 0.2s infinite;
+        }
+        @keyframes redFlash {
+            0%, 100% { box-shadow: inset 0 0 100px #f00; }
+            50% { box-shadow: inset 0 0 200px #900; }
         }
         
         .glitch {
-            animation: glitch 0.3s infinite;
+            animation: glitch 0.2s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); filter: hue-rotate(0deg); }
+            20% { transform: translate(-3px, 3px); filter: hue-rotate(90deg); }
+            40% { transform: translate(-3px, -3px); filter: hue-rotate(180deg); }
+            60% { transform: translate(3px, 3px); filter: hue-rotate(270deg); }
+            80% { transform: translate(3px, -3px); filter: hue-rotate(360deg); }
+            100% { transform: translate(0); }
         }
     </style>
 </head>
@@ -97,45 +126,60 @@
     <div id="screen">
         <div class="header">
             <div class="title glitch">⚠️ SYSTEM BREACH DETECTED ⚠️</div>
-            <div class="subtitle">UNAUTHORIZED ACCESS IN PROGRESS...</div>
+            <div class="subtitle">⚠ UNAUTHORIZED ACCESS IN PROGRESS ⚠️</div>
         </div>
         
         <div id="console"></div>
         
         <pre class="skeleton">
-    ╔═══════════════════════════════╗
-    ║      HACKER ACTIVATED         ║
-    ║   ████████████████████        ║
-    ║   ██  ◊  ◊  ◊  ◊  ██         ║
-    ║   ██      ◊      ██          ║
-    ║   ██  ◊      ◊   ██          ║
-    ║   ██      ◊      ██          ║
-    ║   ████████████████████        ║
-    ╚═══════════════════════════════╝
+    ╔═══════════════════════════════════╗
+    ║     ⚠️ HACKER DETECTED ⚠️         ║
+    ║   ███████████████████████████     ║
+    ║   ██  ◊  ◊  ◊  ◊  ◊  ◊  ██      ║
+    ║   ██       ◊       ██            ║
+    ║   ██   ◊       ◊    ██            ║
+    ║   ██       ◊       ██            ║
+    ║   ██  ◊  ◊  ◊  ◊  ◊  ◊  ██      ║
+    ║   ███████████████████████████     ║
+    ╚═══════════════════════════════════╝
         </pre>
     </div>
+    
+    <!-- Hidden audio element for siren -->
+    <audio id="siren" loop>
+        <source src="https://www.soundjay.com/mechanical/sounds/smoke-detector-1.mp3" type="audio/mp3">
+    </audio>
 
     <script>
         const hacks = [
-            { text: "► CONNECTING TO TARGET SERVER...", time: 600 },
-            { text: "► BYPASSING FIREWALL...", time: 800 },
-            { text: "► IP ADDRESS: 192.168.1.XXX [EXPOSED]", time: 500 },
-            { text: "► CRACKING ENCRYPTION KEYS...", time: 1000 },
-            { text: "► INJECTING MALICIOUS PAYLOAD...", time: 700 },
-            { text: "► DOWNLOADING SENSITIVE DATA...", time: 1200 },
-            { text: "► ACCESSING WEBCAM...", time: 800 },
-            { text: "► KEYSTROKE LOGGING ACTIVE...", time: 600 },
-            { text: "► COPYING PASSWORD DATABASE...", time: 1000 },
-            { text: "► UPLOADING TO DARK WEB...", time: 800 },
-            { text: "► INSTALLING ROOTKIT...", time: 700 },
-            { text: "► FORMATTING HARD DRIVE...", time: 500 },
-            { text: "► DELETING SYSTEM FILES...", time: 600 },
-            { text: "► ⚠️ CRITICAL ERROR DETECTED ⚠️", time: 400, type: "warning" },
-            { text: "► ❌ SYSTEM COMPROMISED ❌", time: 800, type: "error" }
+            { text: "► CONNECTING TO TARGET SERVER...", time: 500 },
+            { text: "► BYPASSING FIREWALL...", time: 600 },
+            { text: "► IP ADDRESS: 192.168.1.XXX [EXPOSED]", time: 400 },
+            { text: "► LOCATION TRACKED: [REDACTED]", time: 500 },
+            { text: "► CRACKING ENCRYPTION KEYS...", time: 800 },
+            { text: "► INJECTING MALICIOUS PAYLOAD...", time: 600 },
+            { text: "► ACCESSING PERSONAL FILES...", time: 700 },
+            { text: "► DOWNLOADING SENSITIVE DATA...", time: 1000 },
+            { text: "► ACCESSING WEBCAM...", time: 600 },
+            { text: "► KEYSTROKE LOGGING ACTIVE...", time: 500 },
+            { text: "► COPYING PASSWORD DATABASE...", time: 800 },
+            { text: "► BANK ACCOUNT DETECTED...", time: 600 },
+            { text: "► SOCIAL SECURITY NUMBER FOUND...", time: 500 },
+            { text: "► UPLOADING TO DARK WEB...", time: 700 },
+            { text: "► INSTALLING ROOTKIT...", time: 600 },
+            { text: "► FORMATTING HARD DRIVE...", time: 400 },
+            { text: "► DELETING RECOVERY PARTITION...", time: 500 },
+            { text: "► WIPING ALL DATA...", time: 600 },
+            { text: "► ⚠️ CRITICAL ERROR ⚠️", time: 300, type: "warning" },
+            { text: "► ❌ SYSTEM COMPROMISED ❌", time: 500, type: "error" },
+            { text: "► 🔴 ALERT: POLICE NOTIFIED 🔴", time: 400, type: "error" },
+            { text: "► TRACING IP ADDRESS...", time: 600, type: "error" },
+            { text: "► ❌ CONNECTION TRACKED ❌", time: 800, type: "error" }
         ];
         
         const consoleDiv = document.getElementById('console');
         let index = 0;
+        let sirenStarted = false;
         
         function addLine(text, type = "") {
             const line = document.createElement('div');
@@ -143,32 +187,53 @@
             line.innerHTML = text;
             consoleDiv.appendChild(line);
             consoleDiv.scrollTop = consoleDiv.scrollHeight;
+            
+            // Trigger alert effects for error messages
+            if (type === "error") {
+                document.body.classList.add('alert');
+                setTimeout(() => document.body.classList.remove('alert'), 200);
+            }
         }
         
         function runHack() {
             if (index < hacks.length) {
                 const hack = hacks[index];
+                
+                // Start siren after 3rd message
+                if (index >= 3 && !sirenStarted) {
+                    sirenStarted = true;
+                    try {
+                        document.getElementById('siren').play().catch(() => {});
+                    } catch(e) {}
+                }
+                
                 addLine(hack.text, hack.type || "");
                 index++;
                 setTimeout(runHack, hack.time);
             } else {
+                // FINAL DESTRUCTION
                 setTimeout(() => {
-                    document.body.style.background = '#200';
+                    document.body.classList.add('shake');
+                    document.body.style.background = '#100';
                     const screen = document.getElementById('screen');
-                    screen.innerHTML = '<div style="color:red;font-size:50px;text-align:center;margin-top:30%;text-shadow:0 0 30px red;animation:blink 0.3s infinite;" class="glitch">☠️ SYSTEM DESTROYED ☠️</div>';
-                }, 1500);
+                    screen.innerHTML = '<div style="color:red;font-size:45px;text-align:center;margin-top:25%;text-shadow:0 0 50px red;animation:blink 0.2s infinite;" class="glitch">☠️<br>SYSTEM<br>DESTROYED<br>☠️</div><div style="color:red;font-size:30px;text-align:center;margin-top:50px;">POLICE HAVE BEEN NOTIFIED</div>';
+                }, 1000);
             }
         }
         
         function startNow() {
-            // Try fullscreen (will work if user clicked anywhere before)
+            // Try fullscreen
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen().catch(() => {});
             }
             
             setTimeout(runHack, 500);
         }
+        
+        // Click anywhere to enable audio (browsers block autoplay)
+        document.addEventListener('click', function() {
+            document.getElementById('siren').play().catch(() => {});
+        }, {once: true});
     </script>
 </body>
 </html>
-
